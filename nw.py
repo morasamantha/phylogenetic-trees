@@ -18,12 +18,12 @@ def needleman_wunsch(str1, str2, match, mismatch, indel):
     queue = deque()
 
     # (En este for es donde está el error u_u)
-    for i in range(1, lstr1+2):
-        for j in range(1, lstr2):
-            puntuacion  = match if str1[j-1] == str2[i-1] else mismatch
+    for i in range(1, len(str1)):
+        for j in range(1, len(str2)):
+            puntuacion  = match if str1[i-1] == str2[j-1] else mismatch
             diagonal = matrix[i-1][j-1] + puntuacion
-            izquierda = matrix[i-1][j] + indel
-            arriba = matrix[i][j-1] + indel
+            arriba = matrix[i-1][j] + indel
+            izquierda = matrix[i][j-1] + indel
 
             maximo = diagonal
             queue.append("d")
@@ -51,8 +51,8 @@ def needleman_wunsch(str1, str2, match, mismatch, indel):
                 c1 += a.popleft()
                 c2 += b.popleft()
                 # Como es diagonal popeamos lstr1 que no nos sirven
-                for j in range(lstr1):
-                    queue.pop()
+                for j in range(len(str1)):
+                    if (queue): queue.pop()
             case "i":
                 c1 += "-"
                 c2 += b.popleft()
@@ -61,8 +61,8 @@ def needleman_wunsch(str1, str2, match, mismatch, indel):
                 c1 += a.popleft()
                 c2 += "-"
                 # Popeamos sólo lstr1-1
-                for j in range(lstr1-1):
-                    queue.pop()
+                for j in range(len(str1)-1):
+                    if(queue): queue.pop()
     #Existe el caso de que alguno tenga algo aún
     while len(a):
         c1 += a.popleft()
@@ -71,7 +71,9 @@ def needleman_wunsch(str1, str2, match, mismatch, indel):
     while len(b):
         c2 += b.popleft()
         c1 = "-" + c1
+    #Este print lo borraremos después 
     print(c1,c2, sep="\n")
+    return(c1,c2)
 
 # sólo pa pruebas xc
 # cadena 2 más grande
@@ -79,7 +81,7 @@ print("Prueba 1")
 needleman_wunsch("agta", "gagta", 1,-1,-1)
 # cadena 1 más grande
 print("Prueba 2")
-needleman_wunsch("agtaa", "gagta", 1,-1,-1)
+needleman_wunsch("agta", "agt", 1,-1,-1)
 # ambas del mismo tamaño
 print("Prueba 3")
 needleman_wunsch("agta", "gagt", 1,-1,-1)

@@ -6,7 +6,7 @@
 ## Algoritmos y modelos utilizados:
 
 ### Alineación de secuencias
-- [ ] Algoritmo Needleman-Wunsh
+- [X] Algoritmo Needleman-Wunsh
 
 ### Estimación de la distancia genética
 - [ ] Modelo Jukes-Cantor (JK69)
@@ -19,7 +19,7 @@
 - [ ] UPGMA
 - [ ] WPGMA
 - [ ] Maximum likehood
-- [x] Método Bayesiano (Cadenas de Markov)
+- [x] Método Bayesiano (Cadenas de Markov) <- Este es el de Mr Bayes
 
 (me gustaría añadir un par más aquí para hacer uno con machine learning y remplazar el 2 y 3, pero no he decidido!)
 

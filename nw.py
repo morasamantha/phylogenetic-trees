@@ -43,34 +43,37 @@ def needleman_wunsch(str1, str2, match, mismatch, indel):
     c1 = ""
     c2 = ""
     a,b = deque(str1), deque(str2)
-    while len(queue) > 0:
+    while queue:
         i = queue.pop()
         match i:
             case "d":
                 c1 += a.popleft()
                 c2 += b.popleft()
-                # Como es diagonal popeamos lstr1 que no nos sirven
-                for j in range(len(str2)):
-                    if (len(queue) > 0): queue.pop()
+                # Como es diagonal popeamos lstr2 que no nos sirven
+                for j in range(lstr2):
+                    if queue: queue.pop()
+                print("\n***","d", c1, c2, "***", sep="\n")
             case "i":
-                c1 = "-" + c1
+                c1 += "-"
                 c2 += b.popleft()
                 # No popeamos nada
+                print("\n***","i", c1, c2, "***", sep="\n")
             case "a":
                 c1 += a.popleft()
-                c2 = "-" + c2
-                # Popeamos sólo lstr1-1
-                for j in range(len(str2)-1):
-                    if(len (queue) > 0): queue.pop()
-        print(c1,c2, sep="\n")
-
+                c2 += "-"
+                # Popeamos sólo lstr2-1
+                for j in range(lstr2-1):
+                    if queue: queue.pop()
+                print("\n***","i", c1, c2, "***", sep="\n")
 
     #Existe el caso de que alguno tenga algo aún
     while len(a) > 0:
+        print("Quedó algo A")
         c1 += a.popleft()
         c2 = "-" + c2
 
     while len(b) > 0:
+        print("Quedó algo B")
         c2 += b.popleft()
         c1 = "-" + c1
     #Este print lo borraremos después 
@@ -78,9 +81,6 @@ def needleman_wunsch(str1, str2, match, mismatch, indel):
     return(c1,c2)
 
 # sólo pa pruebas xc
-# cadena 2 más grande
+# La que ya pasa
 needleman_wunsch("agta", "gagta", 1,-1,-1)
-# cadena 1 más grande
-needleman_wunsch("agta", "agtaa", 1,-1,-1)
-# ambas del mismo tamaño
-needleman_wunsch("agta", "gagt", 1,-1,-1)
+

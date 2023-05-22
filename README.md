@@ -25,3 +25,14 @@
 
 ### Comparación entre árboles
 - [ ] Análisis de parsimonía 
+
+## Pendientes extras
+- [ ] Subir los FASTA.
+- [ ] Desde el main empezar a leer los archivos y usar los métodos que ya están. Lo que deberían hacer hasta ahora es:
+  - [ ] Alinear todas las secuencias
+  - [ ] Las matrices de distancia con cada módelo, cada una creará un .txt.
+
+
+Para usarlo
+- Se necesita tener instalado python3, tabulate (instalar con pip).
+- Desde la carpeta principal ejecutar python3 src/main.py

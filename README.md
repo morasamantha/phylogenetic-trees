@@ -10,7 +10,7 @@
 
 ### Estimación de la distancia genética
 - [X] Modelo Jukes-Cantor (JK69)
-- [ ] Modelo Motoo Kimura (K71)
+- [X] Modelo Motoo Kimura (K71)
 - [ ] Modelo Hasegawa, Kishino y Yano (HKY85)
 - [ ] Modelo GTR 
 

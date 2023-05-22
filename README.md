@@ -9,7 +9,7 @@
 - [X] Algoritmo Needleman-Wunsh
 
 ### Estimación de la distancia genética
-- [ ] Modelo Jukes-Cantor (JK69)
+- [X] Modelo Jukes-Cantor (JK69)
 - [ ] Modelo Motoo Kimura (K71)
 - [ ] Modelo Hasegawa, Kishino y Yano (HKY85)
 - [ ] Modelo GTR 

@@ -2,7 +2,6 @@ import numpy as np
 from collections import deque
 
 def needleman_wunsch(str1, str2, match, mismatch, indel):
-    print("Prueba con las cadenas", str1, str2)
     lstr1, lstr2 = len(str1), len(str2)
     # Paso 1. 
     # Inicializamos la matriz de (m+1) x (n+1), en ceros.
@@ -76,9 +75,3 @@ def needleman_wunsch(str1, str2, match, mismatch, indel):
     c2 = c2 [::-1]
 
     return(c1,c2)
-
-# sólo pa pruebas xc
-needleman_wunsch("agta", "gagta", 1,-1,-1)
-needleman_wunsch("agta", "agata", 1,-1,-1)
-needleman_wunsch("agta", "gagt", 1,-1,-1)
-needleman_wunsch("agta", "gatt", 1,-1,-1)

@@ -46,17 +46,17 @@ def needleman_wunsch(str1, str2, match, mismatch, indel):
         i = queue.pop()
         match i:
             case "d":
-                c1 += a.pop()
-                c2 += b.pop()
+                if a: c1 += a.pop()
+                if b: c2 += b.pop()
                 # Como es diagonal popeamos lstr2 que no nos sirven
                 for j in range(lstr2):
                     if queue: queue.pop()
             case "i":
                 c1 += "-"
-                c2 += b.pop()
+                if b: c2 += b.pop()
                 # No popeamos nada
             case "a":
-                c1 += a.pop()
+                if a: c1 += a.pop()
                 c2 += "-"
                 # Popeamos sólo lstr2-1
                 for j in range(lstr2-1):

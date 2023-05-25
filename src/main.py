@@ -35,23 +35,12 @@ def alinear_secuencias(taxas):
         if len(taxas[i]) > len(taxa_largo):
             taxa_largo = taxas[i]
             index_longest = i
-    # for i in range(l):
-    #     for j in range(l):
-    #         if i != j:
-    #             print("Alineando", i, j)
-    #             alineacion = nw.needleman_wunsch(taxas[i], [j], 1, -1, -1)
 
-    for secuencia in range(l):
-        if secuencia > 0:
-            print("Alineando con secuencia", secuencia)
-            alineadas = nw.needleman_wunsch(taxas[index_longest], taxas[secuencia], 1, -1, -3)
-            taxas[index_longest] = alineadas[0]
-            taxas[secuencia] = alineadas[1]
-            try:
-                with open('pruebas/' + str(secuencia), 'w') as f:
-                    f.write(taxas[secuencia])
-            except FileNotFoundError:
-                print("AAA")
+    for i in range(1, l):
+        print("Alineando", i)
+        alineacion = nw.needleman_wunsch(taxas[i-1], taxas[i], 1, -1, -1)
+        taxas[i] = alineacion[1]
+        taxas[i-1] = alineacion[0]
 
     return taxas
 

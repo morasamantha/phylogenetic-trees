@@ -10,11 +10,16 @@ def main():
     # Estos son los fasta que vamos a leer
     archivos = ['apiscoi.fasta', 'cucarachacoi.fasta', 'dromecoi.fasta', 'shrimpcoi.fasta']
     
-    taxa = leer_archivos(archivos)
+    #taxa = leer_archivos(archivos)
 
-    taxa = alinear_secuencias(taxa)
+    #taxa = alinear_secuencias(taxa)
 
-    jukes_cantor = tabla_jk(taxa, archivos)
+    prueba_tablas = ['agta', 'gagt', 'tagt', 'tcga']
+
+    jukes_cantor = tabla_jk(prueba_tablas)
+
+    with open(os.getcwd() + '/tablas/jukes_cantor.txt', 'w') as outputfile:
+        outputfile.write(tabulate(jukes_cantor, headers=archivos, tablefmt="pretty"))
 
 def leer_archivos(archivos):
     taxa = []
@@ -36,20 +41,27 @@ def alinear_secuencias(taxas):
             taxa_largo = taxas[i]
             index_longest = i
 
-    for i in range(1, l):
-        print("Alineando", i)
-        alineacion = nw.needleman_wunsch(taxas[i-1], taxas[i], 1, -1, -1)
-        taxas[i] = alineacion[1]
-        taxas[i-1] = alineacion[0]
+    for secuencia in range(l):
+        if secuencia > 0:
+            print("Alineando con secuencia", secuencia)
+            alineadas = nw.needleman_wunsch(taxas[index_longest], taxas[secuencia], 1, -1, -3)
+            taxas[index_longest] = alineadas[0]
+            taxas[secuencia] = alineadas[1]
+            try:
+                with open('pruebas/' + str(secuencia), 'w') as f:
+                    f.write(taxas[secuencia])
+            except FileNotFoundError:
+                print("AAA")
 
     return taxas
 
-def tabla_jk(taxas, archivos):
+def tabla_jk(taxas):
     tamanio = len(taxas)
     matrix = np.zeros((tamanio, tamanio), dtype = float)
     for i in range(tamanio):
         for j in range(tamanio):
-            matrix[i][j] = distancias.jukes_cantor(taxas[i], taxas[j])
+            if i != j: matrix[i][j] = distancias.jukes_cantor(taxas[i], taxas[j])
+    print(matrix)
     return matrix
 
 

@@ -10,16 +10,12 @@ def main():
     # Estos son los fasta que vamos a leer
     archivos = ['apiscoi.fasta', 'cucarachacoi.fasta', 'dromecoi.fasta', 'shrimpcoi.fasta']
     
-    #taxa = leer_archivos(archivos)
+    taxa = leer_archivos(archivos)
 
-    #taxa = alinear_secuencias(taxa)
+    taxa = alinear_secuencias(taxa)
 
-    prueba_tablas = ['agta', 'gagt', 'tagt', 'tcga']
+    jukes_cantor = tabla(taxa, "jk", archivos)
 
-    jukes_cantor = tabla_jk(prueba_tablas)
-
-    with open(os.getcwd() + '/tablas/jukes_cantor.txt', 'w') as outputfile:
-        outputfile.write(tabulate(jukes_cantor, headers=archivos, tablefmt="pretty"))
 
 def leer_archivos(archivos):
     taxa = []
@@ -32,7 +28,6 @@ def leer_archivos(archivos):
     return taxa
     
 def alinear_secuencias(taxas):
-    #(como nw es alineación por pares y no múltiple este no es la alineación más exacta)
     #Escogimos alinearlos todos conforme el str más largo
     l = len(taxas)
     taxa_largo, index_longest = "", -1
@@ -47,21 +42,23 @@ def alinear_secuencias(taxas):
             alineadas = nw.needleman_wunsch(taxas[index_longest], taxas[secuencia], 1, -1, -3)
             taxas[index_longest] = alineadas[0]
             taxas[secuencia] = alineadas[1]
-            try:
-                with open('pruebas/' + str(secuencia), 'w') as f:
-                    f.write(taxas[secuencia])
-            except FileNotFoundError:
-                print("AAA")
+            with open('pruebas/' + str(secuencia), 'w') as f:
+                f.write(taxas[secuencia])
 
     return taxas
 
-def tabla_jk(taxas):
+def tabla(taxas, modelo, nombres):
     tamanio = len(taxas)
     matrix = np.zeros((tamanio, tamanio), dtype = float)
+
     for i in range(tamanio):
         for j in range(tamanio):
-            if i != j: matrix[i][j] = distancias.jukes_cantor(taxas[i], taxas[j])
-    print(matrix)
+            if i != j: 
+                matrix[i][j] = distancias.calcula_modelo(taxas[i], taxas[j], modelo)
+    
+    with open(os.getcwd() + '/tablas/modelo.txt', 'w') as new_file:
+        new_file.write(tabulate(taxas, headers=nombres, tablefmt="pretty"))
+    
     return matrix
 
 

@@ -7,32 +7,41 @@
 
 ### Alineación de secuencias
 - [X] Algoritmo Needleman-Wunsh
+- [X] Multiple Sequence Alignment con Star-Alignment* 
 
 ### Estimación de la distancia genética
+- [X] 'Naive' (Sólo contar las diferencias observadas)
 - [X] Modelo Jukes-Cantor (JK69)
 - [X] Modelo Motoo Kimura (K71)
-- [ ] Modelo Hasegawa, Kishino y Yano (HKY85)
-- [ ] Modelo GTR 
+- [X] Tamura (T92)
+- [X] Modelo GTR*
 
 ### Construcción del árbol
-- [ ] Neighbor Joining
+- [X] Neighbor Joining
 - [ ] UPGMA
-- [ ] WPGMA
 - [ ] Maximum likehood
 - [x] Método Bayesiano (Cadenas de Markov) <- Este es el de Mr Bayes
 
-(me gustaría añadir un par más aquí para hacer uno con machine learning y remplazar el 2 y 3, pero no he decidido!)
-
 ### Comparación entre árboles
-- [ ] Análisis de parsimonía 
+- [ ] Análisis de parsimonía*
 
-## Pendientes extras
-- [ ] Subir los FASTA.
-- [ ] Desde el main empezar a leer los archivos y usar los métodos que ya están. Lo que deberían hacer hasta ahora es:
-  - [ ] Alinear todas las secuencias
-  - [ ] Las matrices de distancia con cada módelo, cada una creará un .txt.
+Los métodos marcados con asterísco vienen de una biblioteca/son externos. 
 
+Para usarlo :- )
+- Se necesita tener instalado python3, tabulate, networkx, pyvolve (con biopython y scipy).
 
-Para usarlo
-- Se necesita tener instalado python3, tabulate (instalar con pip).
-- Desde la carpeta principal ejecutar python3 src/main.py
+  `$ pip install tabulate`,
+
+  `$ pip install networkx[default]`
+
+  `$ pip install pyvolve`
+
+  Pyvolve debería de instalar las dependencias faltantes, pero igual:
+
+  `$ pip install biopython` 
+
+  `$ pip install scipy`
+- Desde la carpeta /src ejecutar 
+
+  `$ python3 main.py`
+

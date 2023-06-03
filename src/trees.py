@@ -3,7 +3,6 @@ import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 
-
 def nj(dmatrix, g, taxas, nombre):
     n = len(taxas)
     if n > 2:
@@ -84,22 +83,13 @@ def nj(dmatrix, g, taxas, nombre):
         nx.draw(g,pos,font_color = 'white', node_shape = 's', with_labels = True,)
         nx.draw_networkx_edge_labels(G,pos,edge_labels=weight_labels)
         plt.savefig(os.getcwd() + '/graphs/' + nombre + '.png', dpi=300, bbox_inches='tight')
-        #return g De hecho no la quiero devolver xp Vamos a ver si puede crear un png desde acá....
     else:
         raise Exception("Algo salió mal. :-) <3")
 
+def neighbor_joining(matrix, headers, nombre):
+    G = nx.Graph()
+    G.add_node()
+    for taxa in range(len(headers)):
+        G.add_node(headers[taxa])
 
-distance_matrix = np.array([[0, 5, 9, 9, 8],
-                            [5, 0, 10, 10, 9],
-                            [9, 10, 0, 8, 7],
-                            [9, 10, 8, 0, 3],
-                            [8, 9, 7, 3, 0]])
-t = ['a', 'b', 'c', 'd', 'e']
-# Formando la estreeellaaaa.
-G = nx.Graph()
-G.add_node(0)
-for taxa in range(len(t)):
-    G.add_node(t[taxa])
-    G.add_edge(0, t[taxa])
-    
-nj(distance_matrix, G, t, "prueba")
+    return nj(matrix, G, headers, nombre)

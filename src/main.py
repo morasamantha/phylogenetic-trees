@@ -1,21 +1,44 @@
 import os
 import itertools
 import nw
+import msa
 import numpy as np
 import distancias
 from tabulate import tabulate
-
+import trees
 
 def main():
-    # Estos son los fasta que vamos a leer
+    # Estos son los fasta que vamos a leer. DEBEN estar en la carpeta de resources
     archivos = ['apiscoi.fasta', 'cucarachacoi.fasta', 'dromecoi.fasta', 'shrimpcoi.fasta']
     
-    taxa = leer_archivos(archivos)
+    taxas = leer_archivos(archivos)
 
-    taxa = alinear_secuencias(taxa)
+    # Para guardar las tablas
+    modelos_distancia = ['naive', 'jk', 'mk', 'tamura']
+    tablas_pares, tablas_multiples = {},{} # de hecho son dicts pero weno xp
 
-    jukes_cantor = tabla(taxa, "jk", archivos)
+    # Para la alineación uno a uno
+    for modelo in modelos_distancia: 
+        ruta_p = '/tablas/nj/' + modelo  + '.txt'
+        tabla_p = alinear_secuencias_pares(taxas, archivos, modelo, ruta_p)
+        tabla_pares[modelo] = tabla_p
+    
+    # Para la alineación múltiple
+    taxas_multiples = alinear_secuencias_multiples(taxas)
 
+    for modelo in modelos_distancia:
+        ruta_m = '/tablas/msa/' + modelo  + '.txt'
+        tabla_m = tabla(taxas, modelo, archivos, ruta_m)
+        tablas_multiples[modelo] = tabla_m
+
+    # Árboles
+    for modelo, tabla in tablas_pares.items():
+        ruta = '/graphs/p/' + modelo  + '.txt'
+        trees.neighbor_joining(tabla, archivos, ruta)
+
+    for modelo, tabla in tablas_pares.items():
+        ruta = '/graphs/m/' + modelo  + '.txt'
+        trees.neighbor_joining(tabla, archivos, ruta)
 
 def leer_archivos(archivos):
     taxa = []
@@ -27,27 +50,26 @@ def leer_archivos(archivos):
         taxa.append(secuencia)
     return taxa
     
-def alinear_secuencias(taxas):
-    #Escogimos alinearlos todos conforme el str más largo
-    l = len(taxas)
-    taxa_largo, index_longest = "", -1
-    for i in range(l):
-        if len(taxas[i]) > len(taxa_largo):
-            taxa_largo = taxas[i]
-            index_longest = i
+def alinear_secuencias_pares(taxas, nombres, modelo, ruta):
+    tamanio = len(taxas)
+    matrix = np.zeros((tamanio, tamanio), dtype = float)
 
-    for secuencia in range(l):
-        if secuencia > 0:
-            print("Alineando con secuencia", secuencia)
-            alineadas = nw.needleman_wunsch(taxas[index_longest], taxas[secuencia], 1, -1, -3)
-            taxas[index_longest] = alineadas[0]
-            taxas[secuencia] = alineadas[1]
-            with open('pruebas/' + str(secuencia), 'w') as f:
-                f.write(taxas[secuencia])
+    for i in range(tamanio):
+        for j in range(i+1, tamanio):
+            alineadas = nw.needleman_wunsch(taxas[i], taxas[j], 1, -1, -1)
+            distancia = distancias.calcula_modelo(alineadas[0], alineadas[1], modelo)
+            matrix[i][j] = distancia 
+            matrix[j][i] = distancia
 
-    return taxas
+    with open(os.getcwd() + ruta, 'w') as new_file:
+        new_file.write(tabulate(matrix, headers=nombres, tablefmt="pretty"))
 
-def tabla(taxas, modelo, nombres):
+    return matrix
+
+def alinear_secuencias_multiples(taxas):
+    return msa.msa(len(taxas), taxas)
+
+def tabla(taxas, modelo, nombres, ruta):
     tamanio = len(taxas)
     matrix = np.zeros((tamanio, tamanio), dtype = float)
 
@@ -56,10 +78,9 @@ def tabla(taxas, modelo, nombres):
             if i != j: 
                 matrix[i][j] = distancias.calcula_modelo(taxas[i], taxas[j], modelo)
     
-    with open(os.getcwd() + '/tablas/modelo.txt', 'w') as new_file:
+    with open(os.getcwd() + ruta , 'w') as new_file:
         new_file.write(tabulate(taxas, headers=nombres, tablefmt="pretty"))
     
     return matrix
-
 
 main()

@@ -6,11 +6,16 @@ def needleman_wunsch(str1, str2, match, mismatch, indel):
     # Paso 1. 
     # Inicializamos la matriz de (m+1) x (n+1), en ceros.
     matrix = np.zeros((lstr1+1, lstr2+1), dtype=int)
+    # -1 (negativos) Borde, 0 diagonal, 1 izquierda, 2 arriba
+    traceback = np.zeros((lstr1+1, lstr2+1), dtype=int)
 
     # Paso 2. 
     # Con slicing la columna 1 y la fila 1 con -i
     matrix[:,0] = [-x for x in range(lstr1+1)]
     matrix[0,:] = [-x for x in range(lstr2+1)]
+
+    traceback[:,0] = [-x for x in range(lstr1+1)]
+    traceback[0,:] = [-x for x in range(lstr2+1)]
 
     # Paso 3.
     # (Este amigo es para simplificar el trace-back)
@@ -24,17 +29,15 @@ def needleman_wunsch(str1, str2, match, mismatch, indel):
             izquierda = matrix[i][j-1] + indel
 
             maximo = diagonal
-            queue.append("d")
+            traceback[i][j] = 0
 
             if izquierda > maximo:
                 maximo = izquierda
-                queue.pop()
-                queue.append("i")
+                traceback[i][j] = 1
             
             if arriba > maximo:
                 maximo = arriba
-                queue.pop()
-                queue.append("a")
+                traceback[i][j] = 2
 
             matrix[i][j] = maximo
 
@@ -42,36 +45,68 @@ def needleman_wunsch(str1, str2, match, mismatch, indel):
     c1 = ""
     c2 = ""
     a,b = deque(str1), deque(str2)
-    while queue:
-        i = queue.pop()
-        match i:
-            case "d":
-                if a: c1 += a.pop()
-                if b: c2 += b.pop()
-                # Como es diagonal popeamos lstr2 que no nos sirven
-                for j in range(lstr2):
-                    if queue: queue.pop()
-            case "i":
+    i, j = lstr1, lstr2
+    # actual = traceback[-1][-1]
+    print(traceback)
+    while traceback[i][j] > -1 and a:
+        actual = traceback[i][j]
+        match actual:
+            case 0:
+                c1 += a.pop()
+                c2 += b.pop()
+                i -= 1
+                j -= 1
+            case 1:
                 c1 += "-"
-                if b: c2 += b.pop()
-                # No popeamos nada
-            case "a":
-                if a: c1 += a.pop()
+                c2 += b.pop()
+                j -= 1
+            case 2:
+                c1 += a.pop()
                 c2 += "-"
-                # Popeamos sólo lstr2-1
-                for j in range(lstr2-1):
-                    if queue: queue.pop()
+                i -= 1
+            case _:
+                pass 
 
-    #Existe el caso de que alguno tenga algo aún
-    while len(a) > 0:
-        c1 += a.pop()
-        c2 += "-"
+    # a,b = deque(str1), deque(str2)
+    # while queue:
+    #     i = queue.pop()
+    #     match i:
+    #         case "d":
+    #             if a and b : 
+    #                 c1 += a.pop()
+    #                 c2 += b.pop()
+    #             else: 
+    #                 print(len(c1)-len(c2), a, b, queue, sep="\n")
+    #                 raise Exception("a o b son vacíos.")
+    #             # Como es diagonal popeamos lstr2 que no nos sirven
+    #             for j in range(lstr2):
+    #                 if queue: queue.pop()
+    #         case "i":
+    #             c1 += "-"
+    #             if b: c2 += b.pop()
+    #             else: 
+    #                 print(len(c1)-len(c2), a, b, queue, sep="\n")
+    #                 raise Exception("b no tiene nada.")
+    #             # No popeamos nada
+    #         case "a":
+    #             if a: c1 += a.pop()
+    #             else: 
+    #                 print(len(c1)-len(c2), a, b, queue, sep="\n")
+    #                 raise Exception("a no tiene nada.")
+    #             c2 += "-"
+    #             # Popeamos sólo lstr2-1
+    #             for j in range(lstr2-1):
+    #                 if queue: queue.pop()
 
-    while len(b) > 0:
-        c2 += b.pop()
-        c1 += "-"
+    # #Existe el caso de que alguno tenga algo aún
+    # while len(a) > 0:
+    #     c1 += a.pop()
+    #     c2 += "-"
+
+    # while len(b) > 0:
+    #     c2 += b.pop()
+    #     c1 += "-"
     #originalmente estaban al revés. quiero corregirlo pero mejor lo vemos al final xd
     c1 = c1 [::-1]
     c2 = c2 [::-1]
-
     return(c1,c2)

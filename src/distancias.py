@@ -1,5 +1,5 @@
-# Para calcular la distancia genética.
 import numpy as np
+from decimal import Decimal
 
 def distancia(str1, str2):
     difs, l = 0, len(str1)
@@ -62,7 +62,7 @@ def tamura(str1, str2):
     return distancia
 
 def cuenta_sitio(seq):
-    g, c, p, a, t = 0,0,0,0,t
+    g, c, p, a, t = 0,0,0,0,0
     for i in range(len(seq)):
         match seq[i]:
             case 'G':
@@ -79,35 +79,14 @@ def cuenta_sitio(seq):
                 pass 
     return(g,c,p,a,t)
 
-# Hasegawa, Kishino y Kano (HKY85)
-def hasegawa_kishino_kano(str1, str2):
-    l = len(str1)
-    transitions, transversions = 0,0
-    for i in range(l):
-        a,b = str1[i], str2[i]
-        if a != b:
-            if a == '-' or b == '-':
-                pass
-            elif (a == 'A' and b == 'G' or a == 'G' and b == 'A'):
-                transitions += 1    
-            elif (a == 'T' and b == 'C' or a == 'C' and b == 'T'):
-                transitions += 1
-            else:
-                transversions += 1
-    sec1 = cuenta_sitio(str1)
-    sec2 = cuenta_sitio(str2)
-    p = (sec1[0] + sec1[4]) / (l - sec1[2])
-    q = (sec2[0] + sec2[4]) / (l - sec2[2])
-    transitions /= l
-    d = -[(transitions * log((1 - 2 * fR    ) - 2 * fY)) + (transversions * log((1 - 2 * fY)))] / l
-# GTR
 def gtr(str1, str2):
     print("Sec 1", str1, "Sec 2", str2)
 
 
 def calcula_modelo(str1, str2, modelo):
     if (len(str1) != len(str2)):
-        raise Exception("Deben de ser del mismo tamaño.")
+        return 1
+    #    raise Exception("Deben de ser del mismo tamaño.")
     d = 0
     match modelo:
         case 'naive':
@@ -118,4 +97,4 @@ def calcula_modelo(str1, str2, modelo):
             d = motoo_kimura(str1, str2)
         case 'tamura':
             d = tamura(str1, str2)
-    return d
+    return (round(d, 3))

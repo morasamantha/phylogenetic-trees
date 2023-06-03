@@ -21,24 +21,24 @@ def main():
     for modelo in modelos_distancia: 
         ruta_p = '/tablas/nj/' + modelo  + '.txt'
         tabla_p = alinear_secuencias_pares(taxas, archivos, modelo, ruta_p)
-        tabla_pares[modelo] = tabla_p
+        tablas_pares[modelo] = tabla_p
     
     # Para la alineación múltiple
-    taxas_multiples = alinear_secuencias_multiples(taxas)
+    # taxas_multiples = alinear_secuencias_multiples(taxas)
 
-    for modelo in modelos_distancia:
-        ruta_m = '/tablas/msa/' + modelo  + '.txt'
-        tabla_m = tabla(taxas, modelo, archivos, ruta_m)
-        tablas_multiples[modelo] = tabla_m
+    # for modelo in modelos_distancia:
+    #     ruta_m = '/tablas/msa/' + modelo  + '.txt'
+    #     tabla_m = tabla(taxas, modelo, archivos, ruta_m)
+    #     tablas_multiples[modelo] = tabla_m
 
     # Árboles
     for modelo, tabla in tablas_pares.items():
-        ruta = '/graphs/p/' + modelo  + '.txt'
+        ruta = os.getcwd() + '/graphs/p/' + modelo
         trees.neighbor_joining(tabla, archivos, ruta)
 
-    for modelo, tabla in tablas_pares.items():
-        ruta = '/graphs/m/' + modelo  + '.txt'
-        trees.neighbor_joining(tabla, archivos, ruta)
+    # for modelo, tabla in tablas_multiples.items():
+    #     ruta = '/graphs/m/' + modelo  + '.png'
+    #     trees.neighbor_joining(tabla, archivos, ruta)
 
 def leer_archivos(archivos):
     taxa = []

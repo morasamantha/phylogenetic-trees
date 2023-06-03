@@ -2,6 +2,7 @@ import os
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
+from decimal import Decimal
 
 def nj(dmatrix, g, taxas, nombre):
     n = len(taxas)
@@ -67,8 +68,8 @@ def nj(dmatrix, g, taxas, nombre):
         if(g.has_edge(0, taxa_i)) : g.remove_edge(0, taxa_i)
         if(g.has_edge(0, taxa_j)) : g.remove_edge(0, taxa_j)
         # Los agregamos a V con todo y sus branch length 
-        g.add_edge(nuevo_vertice, taxa_i, weight=Vi)
-        g.add_edge(nuevo_vertice, taxa_j, weight=Vj)
+        g.add_edge(nuevo_vertice, taxa_i, weight=(round(Vi, 4)))
+        g.add_edge(nuevo_vertice, taxa_j, weight=(round(Vj, 4)))
 
         # Seguimos calculandoooooo....
         nj(dist_update, g, taxas, nombre)
@@ -77,18 +78,19 @@ def nj(dmatrix, g, taxas, nombre):
         # Unimos los dos que quedan, by a branch length d(ti,tj)
         g.add_edge(taxas[0], taxas[1], weight=dmatrix[0,1])
         g.remove_node(0)
+
         plt.figure()    
         pos = nx.planar_layout(g)
         weight_labels = nx.get_edge_attributes(g,'weight')
-        nx.draw(g,pos,font_color = 'white', node_shape = 's', with_labels = True,)
-        nx.draw_networkx_edge_labels(G,pos,edge_labels=weight_labels)
-        plt.savefig(os.getcwd() + '/graphs/' + nombre + '.png', dpi=300, bbox_inches='tight')
+        nx.draw(g,pos,font_color = 'black', node_shape = 's', with_labels = True,)
+        nx.draw_networkx_edge_labels(g,pos,edge_labels=weight_labels)
+        plt.savefig(nombre, dpi=300, bbox_inches='tight')
     else:
         raise Exception("Algo salió mal. :-) <3")
 
 def neighbor_joining(matrix, headers, nombre):
     G = nx.Graph()
-    G.add_node()
+    G.add_node(0)
     for taxa in range(len(headers)):
         G.add_node(headers[taxa])
 

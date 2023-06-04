@@ -9,7 +9,10 @@ import trees
 
 def main():
     # Estos son los fasta que vamos a leer. DEBEN estar en la carpeta de resources
-    archivos = ['apiscoi.fasta', 'cucarachacoi.fasta', 'dromecoi.fasta', 'shrimpcoi.fasta']
+    archivos = ['a_andersoni_mitgen.fasta', 'a_barbouri_mitgen.fasta', 'a_bishopi_mitgen.fasta',
+                'a_californiense_mitgen.fasta', 'a_dumerilii_mitgen.fasta', 'a_laterale_mitgen.fasta',
+               'a_mexicanum_mitgen.fasta', 'a_talpoideum_mitgen.fasta','a_texanum_mitgen.fasta', 'a_tigrinum_mitgen.fasta',
+               's_lacertina_mitgen.fasta']
     
     taxas = leer_archivos(archivos)
 

@@ -30,24 +30,24 @@ def main():
     # taxas_multiples = alinear_secuencias_multiples(taxas)
 
     # for modelo in modelos_distancia:
-    #     ruta_m = '/tablas/msa/' + modelo  + '.txt'
+    #     ruta_m = '\tablas\msa\' + modelo  + '.txt'
     #     tabla_m = tabla(taxas, modelo, archivos, ruta_m)
     #     tablas_multiples[modelo] = tabla_m
 
     # Árboles
     for modelo, tabla in tablas_pares.items():
-        ruta = os.getcwd() + '/graphs/p/' + modelo
+        ruta = os.getcwd() + '\graphs\p\' + modelo
         trees.neighbor_joining(tabla, archivos, ruta)
 
     # for modelo, tabla in tablas_multiples.items():
-    #     ruta = '/graphs/m/' + modelo  + '.png'
+    #     ruta = '\graphs\m\' + modelo  + '.png'
     #     trees.neighbor_joining(tabla, archivos, ruta)
 
 def leer_archivos(archivos):
     taxa = []
     for archivo in archivos:
         secuencia = ""
-        with open(os.getcwd() + '/resources/' + archivo) as file:
+        with open(os.getcwd() + '\resources\' + archivo) as file:
             for linea in itertools.islice(file, 1, None):
                 secuencia += linea.rstrip()
         taxa.append(secuencia)

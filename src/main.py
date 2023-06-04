@@ -22,7 +22,7 @@ def main():
 
     # Para la alineación uno a uno
     for modelo in modelos_distancia: 
-        ruta_p = '/tablas/nj/' + modelo  + '.txt'
+        ruta_p = '\tablas\nj\' + modelo  + '.txt'
         tabla_p = alinear_secuencias_pares(taxas, archivos, modelo, ruta_p)
         tablas_pares[modelo] = tabla_p
     

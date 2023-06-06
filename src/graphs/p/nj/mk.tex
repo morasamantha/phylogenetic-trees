@@ -13,39 +13,39 @@
         (72.0:2) node (dumerilii){dumerilii}
         (90.0:2) node (laterale){laterale}
         (108.0:2) node (mexicanum){mexicanum}
-        (126.0:2) node (alpoideum){alpoideum}
+        (126.0:2) node (talpoideum){talpoideum}
         (144.0:2) node (texanum){texanum}
         (162.0:2) node (tigrinum){tigrinum}
         (180.0:2) node (lacertina){lacertina}
-        (198.0:2) node (andersonimexicanum){andersonimexicanum}
-        (216.0:2) node (barbouritexanum){barbouritexanum}
-        (234.0:2) node (alpoideumlacertina){alpoideumlacertina}
-        (252.0:2) node (dumeriliiandersonimexicanum){dumeriliiandersonimexicanum}
-        (270.0:2) node (tigrinumdumeriliiandersonimexicanum){tigrinumdumeriliiandersonimexicanum}
-        (288.0:2) node (californiensetigrinumdumeriliiandersonimexicanum){californiensetigrinumdumeriliiandersonimexicanum}
-        (306.0:2) node (bishopialpoideumlacertina){bishopialpoideumlacertina}
-        (324.0:2) node (lateralebishopialpoideumlacertina){lateralebishopialpoideumlacertina}
-        (342.0:2) node (barbouritexanumcaliforniensetigrinumdumeriliiandersonimexicanum){barbouritexanumcaliforniensetigrinumdumeriliiandersonimexicanum};
+        (198.0:2) node (1){1}
+        (216.0:2) node (2){2}
+        (234.0:2) node (3){3}
+        (252.0:2) node (4){4}
+        (270.0:2) node (5){5}
+        (288.0:2) node (6){6}
+        (306.0:2) node (7){7}
+        (324.0:2) node (8){8}
+        (342.0:2) node (9){9};
       \begin{scope}[-]
-        \draw (andersoni) to node[] {0.0041} (andersonimexicanum);
-        \draw (barbouri) to node[] {0.0319} (barbouritexanum);
-        \draw (bishopi) to node[] {0.0574} (bishopialpoideumlacertina);
-        \draw (californiense) to node[] {0.0322} (californiensetigrinumdumeriliiandersonimexicanum);
-        \draw (dumerilii) to node[] {0.0162} (dumeriliiandersonimexicanum);
-        \draw (laterale) to node[] {0.051} (lateralebishopialpoideumlacertina);
-        \draw (mexicanum) to node[] {0.0029} (andersonimexicanum);
-        \draw (alpoideum) to node[] {0.0645} (alpoideumlacertina);
-        \draw (texanum) to node[] {0.0291} (barbouritexanum);
-        \draw (tigrinum) to node[] {0.0207} (tigrinumdumeriliiandersonimexicanum);
-        \draw (lacertina) to node[] {0.1135} (alpoideumlacertina);
-        \draw (andersonimexicanum) to node[] {0.0118} (dumeriliiandersonimexicanum);
-        \draw (barbouritexanum) to node[] {0.0194} (barbouritexanumcaliforniensetigrinumdumeriliiandersonimexicanum);
-        \draw (alpoideumlacertina) to node[] {0.0126} (bishopialpoideumlacertina);
-        \draw (dumeriliiandersonimexicanum) to node[] {0.0085} (tigrinumdumeriliiandersonimexicanum);
-        \draw (tigrinumdumeriliiandersonimexicanum) to node[] {0.0045} (californiensetigrinumdumeriliiandersonimexicanum);
-        \draw (californiensetigrinumdumeriliiandersonimexicanum) to node[] {0.0177} (barbouritexanumcaliforniensetigrinumdumeriliiandersonimexicanum);
-        \draw (bishopialpoideumlacertina) to node[] {0.0028} (lateralebishopialpoideumlacertina);
-        \draw (lateralebishopialpoideumlacertina) to node[] {0.0017} (barbouritexanumcaliforniensetigrinumdumeriliiandersonimexicanum);
+        \draw (andersoni) to node[] {0.0} (1);
+        \draw (barbouri) to node[] {0.03} (2);
+        \draw (bishopi) to node[] {0.06} (7);
+        \draw (californiense) to node[] {0.03} (6);
+        \draw (dumerilii) to node[] {0.02} (4);
+        \draw (laterale) to node[] {0.05} (8);
+        \draw (mexicanum) to node[] {0.0} (1);
+        \draw (talpoideum) to node[] {0.06} (3);
+        \draw (texanum) to node[] {0.03} (2);
+        \draw (tigrinum) to node[] {0.02} (5);
+        \draw (lacertina) to node[] {0.11} (3);
+        \draw (1) to node[] {0.01} (4);
+        \draw (2) to node[] {0.02} (9);
+        \draw (3) to node[] {0.01} (7);
+        \draw (4) to node[] {0.01} (5);
+        \draw (5) to node[] {0.0} (6);
+        \draw (6) to node[] {0.02} (9);
+        \draw (7) to node[] {0.0} (8);
+        \draw (8) to node[] {0.0} (9);
       \end{scope}
     \end{tikzpicture}
   \caption{{nombre}}

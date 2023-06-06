@@ -1,4 +1,18 @@
-                                                                                                                                                                           ┌─a_barbouri_mitgen.fastaa_texanum_mitgen.fastaa_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-                                                                                                                                                                           └─a_laterale_mitgen.fastaa_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta
-(a_barbouri_mitgen.fastaa_texanum_mitgen.fastaa_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta:0.05,a_laterale_mitgen.fastaa_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta:0.05);
+                ┌─lacertina
+────────────────┤               ┌─alpoideum
+                └───────────────┤               ┌─bishopi
+                                │               │               ┌─laterale
+                                └───────────────┤               │
+                                                │               │                               ┌─californiense
+                                                │               │               ┌───────────────┤
+                                                └───────────────┤               │               │               ┌─tigrinum
+                                                                │               │               └───────────────┤
+                                                                │               │                               │               ┌─dumerilii
+                                                                │               │                               └───────────────┤
+                                                                └───────────────┤                                               │               ┌─andersoni
+                                                                                │                                               └───────────────┤
+                                                                                │                                                               └─mexicanum
+                                                                                │               ┌─barbouri
+                                                                                └───────────────┤
+                                                                                                └─texanum
+(lacertina:0.09,(alpoideum:0.06,(bishopi:0.05,(laterale:0.05,((californiense:0.03,(tigrinum:0.02,(dumerilii:0.02,(andersoni:0.00,mexicanum:0.00):0.01):0.01):0.01):0.02,(barbouri:0.03,texanum:0.03):0.02):0.00):0.01):0.01):0.02);

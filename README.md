@@ -14,27 +14,26 @@
 - [X] Modelo Jukes-Cantor (JK69)
 - [X] Modelo Motoo Kimura (K71)
 - [X] Tamura (T92)
-- [X] Modelo GTR*
 
 ### Construcción del árbol
 - [X] Neighbor Joining
-- [ ] UPGMA
-- [ ] Maximum likehood
-- [x] Método Bayesiano (Cadenas de Markov) <- Este es el de Mr Bayes
+- [X] UPGMA
 
 ### Comparación entre árboles
-- [ ] Análisis de parsimonía*
+- [X] Análisis de parsimonía* <- De R
 
 Los métodos marcados con asterísco vienen de una biblioteca/son externos. 
 
 Para usarlo :- )
-- Se necesita tener instalado python3, tabulate, networkx, pyvolve (con biopython y scipy).
+- Se necesita tener instalado python3, tabulate, networkx, pylocluster, python-newick.
 
   `$ pip install tabulate`,
 
   `$ pip install networkx[default]`
 
-  `$ pip install pyvolve`
+  `$ pip install pylocluster`
+
+  `$ pip install newick`
 
   Pyvolve debería de instalar las dependencias faltantes, pero igual:
 

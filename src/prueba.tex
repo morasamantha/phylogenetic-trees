@@ -1,0 +1,53 @@
+\documentclass{report}
+\usepackage{tikz}
+\usepackage{subcaption}
+
+\begin{document}
+\begin{figure}
+  \begin{tikzpicture}
+      \draw
+        (0.0:2) node (a_andersoni_mitgen.fasta){a_andersoni_mitgen.fasta}
+        (18.0:2) node (a_barbouri_mitgen.fasta){a_barbouri_mitgen.fasta}
+        (36.0:2) node (a_bishopi_mitgen.fasta){a_bishopi_mitgen.fasta}
+        (54.0:2) node (a_californiense_mitgen.fasta){a_californiense_mitgen.fasta}
+        (72.0:2) node (a_dumerilii_mitgen.fasta){a_dumerilii_mitgen.fasta}
+        (90.0:2) node (a_laterale_mitgen.fasta){a_laterale_mitgen.fasta}
+        (108.0:2) node (a_mexicanum_mitgen.fasta){a_mexicanum_mitgen.fasta}
+        (126.0:2) node (a_talpoideum_mitgen.fasta){a_talpoideum_mitgen.fasta}
+        (144.0:2) node (a_texanum_mitgen.fasta){a_texanum_mitgen.fasta}
+        (162.0:2) node (a_tigrinum_mitgen.fasta){a_tigrinum_mitgen.fasta}
+        (180.0:2) node (s_lacertina_mitgen.fasta){s_lacertina_mitgen.fasta}
+        (198.0:2) node (a_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta){a_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta}
+        (216.0:2) node (a_barbouri_mitgen.fastaa_texanum_mitgen.fasta){a_barbouri_mitgen.fastaa_texanum_mitgen.fasta}
+        (234.0:2) node (a_talpoideum_mitgen.fastas_lacertina_mitgen.fasta){a_talpoideum_mitgen.fastas_lacertina_mitgen.fasta}
+        (252.0:2) node (a_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta){a_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta}
+        (270.0:2) node (a_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta){a_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta}
+        (288.0:2) node (a_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta){a_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta}
+        (306.0:2) node (a_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta){a_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta}
+        (324.0:2) node (a_laterale_mitgen.fastaa_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta){a_laterale_mitgen.fastaa_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta}
+        (342.0:2) node (a_barbouri_mitgen.fastaa_texanum_mitgen.fastaa_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta){a_barbouri_mitgen.fastaa_texanum_mitgen.fastaa_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta};
+      \begin{scope}[-]
+        \draw (a_andersoni_mitgen.fasta) to node[] {0.0041} (a_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta);
+        \draw (a_barbouri_mitgen.fasta) to node[] {0.0319} (a_barbouri_mitgen.fastaa_texanum_mitgen.fasta);
+        \draw (a_bishopi_mitgen.fasta) to node[] {0.0574} (a_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta);
+        \draw (a_californiense_mitgen.fasta) to node[] {0.0322} (a_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta);
+        \draw (a_dumerilii_mitgen.fasta) to node[] {0.0162} (a_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta);
+        \draw (a_laterale_mitgen.fasta) to node[] {0.051} (a_laterale_mitgen.fastaa_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta);
+        \draw (a_mexicanum_mitgen.fasta) to node[] {0.0029} (a_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta);
+        \draw (a_talpoideum_mitgen.fasta) to node[] {0.0645} (a_talpoideum_mitgen.fastas_lacertina_mitgen.fasta);
+        \draw (a_texanum_mitgen.fasta) to node[] {0.0291} (a_barbouri_mitgen.fastaa_texanum_mitgen.fasta);
+        \draw (a_tigrinum_mitgen.fasta) to node[] {0.0207} (a_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta);
+        \draw (s_lacertina_mitgen.fasta) to node[] {0.1135} (a_talpoideum_mitgen.fastas_lacertina_mitgen.fasta);
+        \draw (a_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta) to node[] {0.0118} (a_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta);
+        \draw (a_barbouri_mitgen.fastaa_texanum_mitgen.fasta) to node[] {0.0194} (a_barbouri_mitgen.fastaa_texanum_mitgen.fastaa_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta);
+        \draw (a_talpoideum_mitgen.fastas_lacertina_mitgen.fasta) to node[] {0.0126} (a_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta);
+        \draw (a_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta) to node[] {0.0085} (a_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta);
+        \draw (a_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta) to node[] {0.0045} (a_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta);
+        \draw (a_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta) to node[] {0.0177} (a_barbouri_mitgen.fastaa_texanum_mitgen.fastaa_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta);
+        \draw (a_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta) to node[] {0.0028} (a_laterale_mitgen.fastaa_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta);
+        \draw (a_laterale_mitgen.fastaa_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta) to node[] {0.0017} (a_barbouri_mitgen.fastaa_texanum_mitgen.fastaa_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta);
+      \end{scope}
+    \end{tikzpicture}
+  \caption{{nombre}}
+\end{figure}
+\end{document}

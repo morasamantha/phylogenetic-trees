@@ -96,6 +96,7 @@ def neighbor_joining(matrix, headers, nombre):
     G.add_node(0)
     for taxa in range(len(headers)):
         G.add_node(headers[taxa])
+        G.add_edge(headers[taxa], 0)
 
     return nj(matrix, G, headers, nombre)
 
@@ -105,3 +106,17 @@ def upgma(matrix, headers, nombre):
         file.write(loads(nwk)[0].ascii_art())
         file.write("\n")
         file.write(nwk)
+
+m = [[0.,    0.098, 0.11,  0.062, 0.032, 0.097, 0.007, 0.128, 0.095, 0.045, 0.178], [0.098, 0.,    0.112, 0.1,   0.099, 0.105, 0.097, 0.132, 0.061, 0.094, 0.184],
+[0.11,  0.112, 0.,    0.111, 0.11,  0.113, 0.109, 0.139, 0.108, 0.105, 0.179],
+[0.062, 0.1,   0.111, 0.,    0.061, 0.103, 0.062, 0.13,  0.1,   0.057, 0.183],
+[0.032, 0.099, 0.11,  0.061, 0.,    0.1,   0.031, 0.127, 0.094, 0.046, 0.177],
+[0.097, 0.105, 0.113, 0.103, 0.1,   0.,    0.096, 0.129, 0.101, 0.094, 0.178],
+[0.007, 0.097, 0.109, 0.062, 0.031, 0.096, 0.,    0.126, 0.094, 0.043, 0.177],
+[0.128, 0.132, 0.139, 0.13,  0.127, 0.129, 0.126, 0.,    0.131, 0.127, 0.178],
+[0.095, 0.061, 0.108, 0.1,   0.094, 0.101, 0.094, 0.131, 0.,    0.091, 0.181],
+[0.045, 0.094, 0.105, 0.057, 0.046, 0.094, 0.043, 0.127, 0.091, 0.,    0.176],
+[0.178, 0.184, 0.179, 0.183, 0.177, 0.178, 0.177, 0.178, 0.181, 0.176, 0.   ]]
+h = ['a_andersoni_mitgen.fasta', 'a_barbouri_mitgen.fasta', 'a_bishopi_mitgen.fasta','a_californiense_mitgen.fasta', 'a_dumerilii_mitgen.fasta', 'a_laterale_mitgen.fasta',
+    'a_mexicanum_mitgen.fasta', 'a_talpoideum_mitgen.fasta','a_texanum_mitgen.fasta', 'a_tigrinum_mitgen.fasta', 's_lacertina_mitgen.fasta']
+neighbor_joining(m, h, "prueba")

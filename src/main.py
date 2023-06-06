@@ -35,7 +35,9 @@ def main():
     # Árboles
     for modelo, tabla in tablas_pares.items():
         ruta = os.getcwd() + '/graphs/p/'
-        trees.neighbor_joining(tabla, archivos, ruta+'/nj/'+modelo)
+        archivo = archivos # Ya no hay tiempo de correr el algoritmo desde cero, pero según yo aquí se soluciona el cómo se generaban las tablas. Si algo sale mal
+        # es porque se modifica el archivos directamente. :-(
+        trees.neighbor_joining(tabla, archivo, ruta+'/nj/'+modelo)
         trees.upgma(tabla, archivos, ruta+'/upgma/'+modelo)
 
     #for modelo, tabla in tablas_multiples.items():

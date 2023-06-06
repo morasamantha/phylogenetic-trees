@@ -3,6 +3,8 @@ import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 from decimal import Decimal
+from pylocluster import *
+from newick import loads
 
 def nj(dmatrix, g, taxas, nombre):
     n = len(taxas)
@@ -76,7 +78,7 @@ def nj(dmatrix, g, taxas, nombre):
     # Paso 4
     elif n == 2:
         # Unimos los dos que quedan, by a branch length d(ti,tj)
-        g.add_edge(taxas[0], taxas[1], weight=dmatrix[0,1])
+        g.add_edge(taxas[0], taxas[1], weight=round(dmatrix[0,1], 4))
         g.remove_node(0)
 
         plt.figure()    
@@ -84,7 +86,8 @@ def nj(dmatrix, g, taxas, nombre):
         weight_labels = nx.get_edge_attributes(g,'weight')
         nx.draw(g,pos,font_color = 'black', node_shape = 's', with_labels = True,)
         nx.draw_networkx_edge_labels(g,pos,edge_labels=weight_labels)
-        plt.savefig(nombre, dpi=300, bbox_inches='tight')
+        plt.savefig(nombre + '.png', dpi=300, bbox_inches='tight')
+        nx.write_latex(g, nombre + ".tex", caption="{nombre}", edge_label=weight_labels)
     else:
         raise Exception("Algo salió mal. :-) <3")
 
@@ -95,3 +98,10 @@ def neighbor_joining(matrix, headers, nombre):
         G.add_node(headers[taxa])
 
     return nj(matrix, G, headers, nombre)
+
+def upgma(matrix, headers, nombre):
+    nwk = linkage(matrix, headers, method='upgma')
+    with open(nombre + '.txt', 'w') as file:
+        file.write(loads(nwk)[0].ascii_art())
+        file.write("\n")
+        file.write(nwk)

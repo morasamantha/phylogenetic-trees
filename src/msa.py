@@ -143,7 +143,13 @@ def delete_gaps_from_block(_MSA_seqs, start, end):
         _MSA_seqs[i] = _MSA_seqs[i][start:end+1].replace('-', '')
     return _MSA_seqs
 
-def msa(seq_num, seqs):
+if __name__ == '__main__':
+    seq_num = int(input())
+    seqs = []
+    
+    for _ in range(seq_num):
+        seqs.append(input())
+
     MSA_seqs, MSA_score = calc_MSA_seqs(seqs)
     MSA_score_2 = 100000000
     while MSA_score_2 > MSA_score:
@@ -161,4 +167,7 @@ def msa(seq_num, seqs):
                 MSA_seqs = copy.deepcopy(MSA_seqs_2)
                 MSA_score = MSA_score_2    
                 
-    return MSA_seqs 
+    #print(MSA_score)
+    #for i in range(seq_num):
+    #    print(MSA_seqs[i])
+    print(MSA_seqs)

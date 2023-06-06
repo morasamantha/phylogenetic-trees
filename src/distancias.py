@@ -79,8 +79,8 @@ def cuenta_sitio(seq):
                 pass 
     return(g,c,p,a,t)
 
-def gtr(str1, str2):
-    print("Sec 1", str1, "Sec 2", str2)
+#def gtr(str1, str2):
+#    print("Sec 1", str1, "Sec 2", str2)
 
 
 def calcula_modelo(str1, str2, modelo):

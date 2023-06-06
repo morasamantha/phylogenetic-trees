@@ -47,7 +47,7 @@ def leer_archivos(archivos):
     taxa = []
     for archivo in archivos:
         secuencia = ""
-        with open(os.getcwd() + '/resources/' + archivo) as file:
+        with open(os.getcwd() + '\resources\' + archivo) as file:
             for linea in itertools.islice(file, 1, None):
                 secuencia += linea.rstrip()
         taxa.append(secuencia)

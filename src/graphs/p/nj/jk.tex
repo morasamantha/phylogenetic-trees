@@ -6,10 +6,46 @@
 \begin{figure}
   \begin{tikzpicture}
       \draw
-        (0.0:2) node (a_barbouri_mitgen.fastaa_texanum_mitgen.fastaa_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta){a_barbouri_mitgen.fastaa_texanum_mitgen.fastaa_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta}
-        (180.0:2) node (a_laterale_mitgen.fastaa_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta){a_laterale_mitgen.fastaa_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta};
+        (0.0:2) node (andersoni){andersoni}
+        (18.0:2) node (barbouri){barbouri}
+        (36.0:2) node (bishopi){bishopi}
+        (54.0:2) node (californiense){californiense}
+        (72.0:2) node (dumerilii){dumerilii}
+        (90.0:2) node (laterale){laterale}
+        (108.0:2) node (mexicanum){mexicanum}
+        (126.0:2) node (alpoideum){alpoideum}
+        (144.0:2) node (texanum){texanum}
+        (162.0:2) node (tigrinum){tigrinum}
+        (180.0:2) node (lacertina){lacertina}
+        (198.0:2) node (alpoideumlacertina){alpoideumlacertina}
+        (216.0:2) node (barbouritexanum){barbouritexanum}
+        (234.0:2) node (andersonimexicanum){andersonimexicanum}
+        (252.0:2) node (dumeriliiandersonimexicanum){dumeriliiandersonimexicanum}
+        (270.0:2) node (tigrinumdumeriliiandersonimexicanum){tigrinumdumeriliiandersonimexicanum}
+        (288.0:2) node (californiensetigrinumdumeriliiandersonimexicanum){californiensetigrinumdumeriliiandersonimexicanum}
+        (306.0:2) node (bishopialpoideumlacertina){bishopialpoideumlacertina}
+        (324.0:2) node (lateralebishopialpoideumlacertina){lateralebishopialpoideumlacertina}
+        (342.0:2) node (barbouritexanumcaliforniensetigrinumdumeriliiandersonimexicanum){barbouritexanumcaliforniensetigrinumdumeriliiandersonimexicanum};
       \begin{scope}[-]
-        \draw (a_barbouri_mitgen.fastaa_texanum_mitgen.fastaa_californiense_mitgen.fastaa_tigrinum_mitgen.fastaa_dumerilii_mitgen.fastaa_andersoni_mitgen.fastaa_mexicanum_mitgen.fasta) to node[] {0.114} (a_laterale_mitgen.fastaa_bishopi_mitgen.fastaa_talpoideum_mitgen.fastas_lacertina_mitgen.fasta);
+        \draw (andersoni) to node[] {0.0045} (andersonimexicanum);
+        \draw (barbouri) to node[] {0.0338} (barbouritexanum);
+        \draw (bishopi) to node[] {0.0693} (bishopialpoideumlacertina);
+        \draw (californiense) to node[] {0.0357} (californiensetigrinumdumeriliiandersonimexicanum);
+        \draw (dumerilii) to node[] {0.0168} (dumeriliiandersonimexicanum);
+        \draw (laterale) to node[] {0.0595} (lateralebishopialpoideumlacertina);
+        \draw (mexicanum) to node[] {0.0035} (andersonimexicanum);
+        \draw (alpoideum) to node[] {0.0899} (alpoideumlacertina);
+        \draw (texanum) to node[] {0.0312} (barbouritexanum);
+        \draw (tigrinum) to node[] {0.022} (tigrinumdumeriliiandersonimexicanum);
+        \draw (lacertina) to node[] {0.2241} (alpoideumlacertina);
+        \draw (alpoideumlacertina) to node[] {0.0217} (bishopialpoideumlacertina);
+        \draw (barbouritexanum) to node[] {0.0251} (barbouritexanumcaliforniensetigrinumdumeriliiandersonimexicanum);
+        \draw (andersonimexicanum) to node[] {0.0127} (dumeriliiandersonimexicanum);
+        \draw (dumeriliiandersonimexicanum) to node[] {0.0095} (tigrinumdumeriliiandersonimexicanum);
+        \draw (tigrinumdumeriliiandersonimexicanum) to node[] {0.0046} (californiensetigrinumdumeriliiandersonimexicanum);
+        \draw (californiensetigrinumdumeriliiandersonimexicanum) to node[] {0.0236} (barbouritexanumcaliforniensetigrinumdumeriliiandersonimexicanum);
+        \draw (bishopialpoideumlacertina) to node[] {0.004} (lateralebishopialpoideumlacertina);
+        \draw (lateralebishopialpoideumlacertina) to node[] {0.0009} (barbouritexanumcaliforniensetigrinumdumeriliiandersonimexicanum);
       \end{scope}
     \end{tikzpicture}
   \caption{{nombre}}

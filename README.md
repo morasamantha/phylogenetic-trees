@@ -44,3 +44,4 @@ Para usarlo :- )
 
   `$ python3 main.py`
 
+Si se quiere correr la parte de MSA se debe de descomentar unos pedazos de código, además de traer al directorio el main-2 del repositorio ligado arriba y renombrarlo como msa.py. 

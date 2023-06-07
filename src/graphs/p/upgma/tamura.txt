@@ -1,5 +1,5 @@
                 ┌─lacertina
-────────────────┤               ┌─alpoideum
+────────────────┤               ┌─talpoideum
                 └───────────────┤               ┌─bishopi
                                 │               │               ┌─laterale
                                 └───────────────┤               │
@@ -15,4 +15,4 @@
                                                                                 │               ┌─barbouri
                                                                                 └───────────────┤
                                                                                                 └─texanum
-(lacertina:0.09,(alpoideum:0.07,(bishopi:0.06,(laterale:0.05,((californiense:0.03,(tigrinum:0.02,(dumerilii:0.02,(andersoni:0.00,mexicanum:0.00):0.01):0.01):0.01):0.02,(barbouri:0.03,texanum:0.03):0.02):0.00):0.01):0.01):0.02);
+(lacertina:0.09,(talpoideum:0.07,(bishopi:0.06,(laterale:0.05,((californiense:0.03,(tigrinum:0.02,(dumerilii:0.02,(andersoni:0.00,mexicanum:0.00):0.01):0.01):0.01):0.02,(barbouri:0.03,texanum:0.03):0.02):0.00):0.01):0.01):0.02);

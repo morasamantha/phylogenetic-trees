@@ -2,7 +2,7 @@ import os
 import itertools
 import nw
 import subprocess
-import msa
+#import msa Para correrlo, del repositorio ligado descargar main2 y ponerlo aquí, con el nombre msa.py
 import numpy as np
 import distancias
 from tabulate import tabulate
@@ -81,7 +81,7 @@ def alinear_secuencias_multiples(taxas):
     args = ['python', 'msa.py', str(len(taxas))] + taxas
     salida = subprocess.check_output(args)
     with open(os.getcwd() + '/tablas/msa/msa.txt', 'w') as f:
-        f.write(salida)
+        f.write(tabulate(tabla, headers=nombres, tablefmt="pretty"))
     return salida
 
 def tabla(taxas, modelo, nombres, ruta):

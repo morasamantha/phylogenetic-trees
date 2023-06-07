@@ -7,7 +7,7 @@
 
 ### Alineación de secuencias
 - [X] Algoritmo Needleman-Wunsh
-- [X] Multiple Sequence Alignment con Star-Alignment* [Link del proyecto]{https://github.com/zahrasalarian/Bioinformatics-Mini-Projects}
+- [X] Multiple Sequence Alignment con Star-Alignment* [Link del proyecto](https://github.com/zahrasalarian/Bioinformatics-Mini-Projects)
 
 ### Estimación de la distancia genética
 - [X] 'Naive' (Sólo contar las diferencias observadas)
